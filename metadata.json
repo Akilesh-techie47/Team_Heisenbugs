@@ -1,0 +1,6 @@
+{
+  "name": "LostFound+ | Find it. Verify it. Bring it home.",
+  "description": "A trusted platform to report, discover, verify and recover lost items with smart matching, verification workflows, and secure handover.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

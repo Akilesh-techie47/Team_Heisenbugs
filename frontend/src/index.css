@@ -1,0 +1,415 @@
+@import "tailwindcss";
+
+/* =========================================================
+   LOSTFOUND+ — MASTER DESIGN SYSTEM
+   Feastables-Inspired Energy: Bold, Playful, Consumer-Grade
+   ========================================================= */
+
+/* ---------------- Fonts ---------------- */
+@font-face {
+  font-family: "Dutch Morgan";
+  src: url("./assets/fonts/DutchMorgan.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Dutch Morgan Round";
+  src: url("./assets/fonts/DutchMorganRound.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Valden";
+  src: url("./assets/fonts/Valden.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------------- Tailwind 4 Theme ---------------- */
+@theme {
+  /* Fonts */
+  --font-display: "Dutch Morgan Round", sans-serif;
+  --font-display-alt: "Dutch Morgan", sans-serif;
+  --font-body: "Valden", sans-serif;
+
+  /* Brand Colors */
+  --color-brand-purple: #5B00ED;
+  --color-brand-purple-dark: #3F0791;
+  --color-brand-pink: #E30BA6;
+  --color-brand-yellow: #FFD900;
+  --color-brand-blue: #BFEFFF;
+  --color-brand-lilac: #DAD9FF;
+  --color-brand-orange: #FF6B00;
+  --color-brand-green: #8CFF00;
+  --color-brand-black: #000000;
+  --color-brand-white: #FFFFFF;
+
+  /* Surfaces & Neutrals */
+  --color-surface: #FFFFFF;
+  --color-surface-soft: #F8F7FF;
+  --color-surface-muted: #F1EFFE;
+  --color-text-main: #000000;
+  --color-text-muted: #514F5A;
+
+  /* Status Colors */
+  --color-status-lost: #FF4B4B;
+  --color-status-found: #4D8DFF;
+  --color-status-recovered: #1B8A4B;
+  --color-status-pending: #FFB800;
+
+  /* Shadow tokens */
+  --shadow-hand-sm: 2px 2px 0px #000000;
+  --shadow-hand: 4px 4px 0px #000000;
+  --shadow-hand-lg: 6px 6px 0px #000000;
+  --shadow-hand-xl: 8px 8px 0px #000000;
+}
+
+/* ---------------- Global Resets & Defaults ---------------- */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #FFFFFF;
+  color: #000000;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: var(--font-body);
+}
+
+/* ---------------- Typography Hierarchy ---------------- */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-display-alt {
+  font-family: var(--font-display-alt);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* Feastables-style expressive display headings */
+.display-hero {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 9vw, 110px);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 6vw, 76px);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.display-lg {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4.5vw, 54px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.display-md {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3.2vw, 38px);
+  line-height: 1.0;
+  text-transform: uppercase;
+}
+
+/* ---------------- Hand-Drawn Borders & Shadows ---------------- */
+.border-hand {
+  border: 2.5px solid #000000;
+}
+
+.border-hand-3 {
+  border: 3px solid #000000;
+}
+
+.shadow-hand-sm {
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.shadow-hand {
+  box-shadow: 4px 4px 0px #000000;
+}
+
+.shadow-hand-lg {
+  box-shadow: 6px 6px 0px #000000;
+}
+
+.shadow-hand-xl {
+  box-shadow: 8px 8px 0px #000000;
+}
+
+.shadow-hand-yellow {
+  box-shadow: 4px 4px 0px #FFD900;
+}
+
+.shadow-hand-pink {
+  box-shadow: 4px 4px 0px #E30BA6;
+}
+
+.shadow-hand-purple {
+  box-shadow: 4px 4px 0px #5B00ED;
+}
+
+/* Double-border effect for select featured cards */
+.double-border-card {
+  position: relative;
+  border: 2.5px solid #000000;
+  box-shadow: 5px 5px 0px #000000;
+}
+
+.double-border-card::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 1.5px dashed #000000;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.25;
+}
+
+/* ---------------- Tactile Button System ---------------- */
+.btn-tactile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border: 2.5px solid #000000;
+  border-radius: 9999px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 4px 4px 0px #000000;
+  transition: transform 160ms cubic-bezier(0.2, 0, 0, 1), box-shadow 160ms cubic-bezier(0.2, 0, 0, 1), background-color 160ms ease;
+  user-select: none;
+  outline: none;
+}
+
+.btn-tactile:focus-visible {
+  outline: 2px solid #5B00ED;
+  outline-offset: 3px;
+}
+
+.btn-tactile:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
+}
+
+.btn-tactile:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000000;
+}
+
+/* Tactile Button Color Variants */
+.btn-tactile-purple {
+  background-color: var(--color-brand-purple);
+  color: #FFFFFF;
+}
+.btn-tactile-purple:hover {
+  background-color: #4f00ce;
+}
+
+.btn-tactile-yellow {
+  background-color: var(--color-brand-yellow);
+  color: #000000;
+}
+.btn-tactile-yellow:hover {
+  background-color: #f0cc00;
+}
+
+.btn-tactile-pink {
+  background-color: var(--color-brand-pink);
+  color: #FFFFFF;
+}
+.btn-tactile-pink:hover {
+  background-color: #c90993;
+}
+
+.btn-tactile-white {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+.btn-tactile-white:hover {
+  background-color: #F8F7FF;
+}
+
+.btn-tactile-black {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+.btn-tactile-black:hover {
+  background-color: #222222;
+}
+
+.btn-tactile-blue {
+  background-color: var(--color-brand-blue);
+  color: #000000;
+}
+.btn-tactile-blue:hover {
+  background-color: #a8e5fb;
+}
+
+/* ---------------- Tactile Card System ---------------- */
+.card-tactile {
+  border: 2.5px solid #000000;
+  border-radius: 20px;
+  background-color: #FFFFFF;
+  box-shadow: 4px 4px 0px #000000;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.card-tactile:hover {
+  transform: translateY(-3px);
+  box-shadow: 5px 8px 0px #000000;
+}
+
+.card-tactile-static {
+  border: 2.5px solid #000000;
+  border-radius: 20px;
+  background-color: #FFFFFF;
+  box-shadow: 4px 4px 0px #000000;
+}
+
+/* Card Fill Variants */
+.card-tactile-purple {
+  background-color: var(--color-brand-purple);
+  color: #FFFFFF;
+}
+
+.card-tactile-yellow {
+  background-color: var(--color-brand-yellow);
+  color: #000000;
+}
+
+.card-tactile-lilac {
+  background-color: var(--color-brand-lilac);
+  color: #000000;
+}
+
+.card-tactile-blue {
+  background-color: var(--color-brand-blue);
+  color: #000000;
+}
+
+.card-tactile-pink {
+  background-color: var(--color-brand-pink);
+  color: #FFFFFF;
+}
+
+/* ---------------- Tactile Input Styling ---------------- */
+.input-tactile {
+  width: 100%;
+  border: 2px solid #000000;
+  border-radius: 14px;
+  background-color: #FFFFFF;
+  color: #000000;
+  padding: 10px 14px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  box-shadow: 2px 2px 0px #000000;
+  transition: box-shadow 140ms ease, border-color 140ms ease, transform 140ms ease;
+  outline: none;
+}
+
+.input-tactile:focus {
+  border-color: var(--color-brand-purple);
+  box-shadow: 4px 4px 0px var(--color-brand-purple);
+}
+
+/* ---------------- Tactile Badge ---------------- */
+.badge-tactile {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border: 2px solid #000000;
+  border-radius: 9999px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  box-shadow: 2px 2px 0px #000000;
+  line-height: 1.2;
+}
+
+/* ---------------- Decorative Hand-Drawn Wiggle / Angle ---------------- */
+.rotate-slight-left {
+  transform: rotate(-1.5deg);
+}
+
+.rotate-slight-right {
+  transform: rotate(1.5deg);
+}
+
+/* ---------------- Scrollbar ---------------- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1EFFE;
+  border-left: 2px solid #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-purple);
+  border: 2px solid #000000;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-purple-dark);
+}
+
+/* ---------------- Reduced Motion Accessibility ---------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .btn-tactile:hover,
+  .card-tactile:hover {
+    transform: none !important;
+  }
+}
